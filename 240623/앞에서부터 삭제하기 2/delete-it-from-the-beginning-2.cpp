@@ -18,18 +18,21 @@ int main() {
         pq.push(num);
     }
 
-    int sum = 0, cnt = 0;
+    int sum = 0, cnt = 0, mini = 21e8;
     double ans = -1.0;
 
     while((int)pq.size() != 1)
     {
-        sum += pq.top();
+        int tmp = pq.top();
+        sum += tmp;
         cnt++;
         pq.pop();
 
-        if (cnt > 1)
+        mini = min(mini, tmp);
+
+        if (cnt > 2)
         {
-            ans = max(ans, (double)sum / cnt);
+            ans = max(ans, (double)(sum - mini) / (cnt - 1));
         }
     }
 

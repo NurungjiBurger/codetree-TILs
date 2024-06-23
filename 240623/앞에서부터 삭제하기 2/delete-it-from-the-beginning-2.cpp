@@ -4,8 +4,7 @@
 using namespace std;
 
 int n, k;
-double ans = -1.0;
-int arr[100001];
+priority_queue<int> pq;
 
 int main() {
     
@@ -13,21 +12,25 @@ int main() {
 
     for(int i=0;i<n;i++)
     {
-        cin >> arr[i];
+        int num;
+        cin >> num;
+
+        pq.push(num);
     }
 
-    for(int i=1;i<n-2;i++)
+    int sum = 0, cnt = 0;
+    double ans = -1.0;
+
+    while((int)pq.size() != 1)
     {
-        int sum = 0, cnt = 0, mini = 21e8;
-        for(int j=i;j<n;j++)
+        sum += pq.top();
+        cnt++;
+        pq.pop();
+
+        if (cnt > 1)
         {
-            sum += arr[j];
-            cnt++;
-
-            mini = min(mini, arr[j]);
+            ans = max(ans, (double)sum / cnt);
         }
-
-        ans = max(ans, (double)(sum - mini) / (cnt - 1));
     }
 
     cout << fixed;

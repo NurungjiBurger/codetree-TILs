@@ -4,31 +4,16 @@ using namespace std;
 
 long long s;
 
-bool check(int num)
+long long binarysearch(long long left, long long right)
 {
-    long long tmp = (long long)num;
-
-    if (((tmp * tmp) + tmp) / 2 <= s) return true;
-    else return false;
-}
-
-int binarysearch(int left, int right)
-{
-    int ans = -21e8;
-    int mid;
+    long long mid;
 
     while(left<=right)
     {
         mid = (left + right) / 2;
 
-        if (check(mid))
-        {
-            left = mid + 1;
-        }
-        else
-        {
-            right = mid - 1;
-        }
+        if (((mid * mid) + mid) / 2 <= s) left = mid + 1;
+        else right = mid - 1;
     }
 
     return right;

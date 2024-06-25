@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int n, ans = -21e8;
+int n, ans = 21e8;
 vector<int> arr;
 
 int main() {
@@ -22,11 +22,11 @@ int main() {
     sort(arr.begin(), arr.end());
 
     int diff;
-    for(int i=1;i<2*n;i++)
+    for(int i=0;i<n;i++)
     {
-        diff = arr[i] - arr[i - 1];
+        diff = abs(arr[n + i] - arr[i]);
 
-        ans = max(ans, diff);
+        ans = min(ans, diff);
     }
 
     cout << ans;

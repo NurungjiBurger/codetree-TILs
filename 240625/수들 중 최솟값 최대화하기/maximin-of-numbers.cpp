@@ -24,7 +24,7 @@ void check()
     ans = max(ans, mini);
 }
 
-void dfs(int depth)
+void dfs(int depth, int si, int sj)
 {
     if (depth == n)
     {
@@ -32,17 +32,17 @@ void dfs(int depth)
         return;
     }
 
-    for(int i=0;i<n;i++)
+    for(int i=si;i<n;i++)
     {
         if (row[i]) continue;
-        for(int j=0;j<n;j++)
+        for(int j=sj;j<n;j++)
         {
             if (col[j]) continue;
 
             row[i] = true;
             col[j] = true;
             points.push_back({i, j});
-            dfs(depth + 1);
+            dfs(depth + 1, i + 1, j + 1);
             points.pop_back();
             row[i] = false;
             col[j] = false;
@@ -63,7 +63,7 @@ int main() {
         }
     }
 
-    dfs(0);
+    dfs(0, 0, 0);
 
     cout << ans;
 

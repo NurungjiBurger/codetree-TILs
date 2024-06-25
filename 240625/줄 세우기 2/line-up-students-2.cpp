@@ -1,5 +1,6 @@
 #include <iostream>
-#include <queue>
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -8,13 +9,13 @@ struct Student{
     int height;
     int weight;
     bool operator<(Student right) const{
-        if (height == right.height) return weight < right.weight;
-        return height > right.height;
+        if (height == right.height) return weight > right.weight;
+        return height < right.height;
     }
 };
 
 int n;
-priority_queue<Student> pq;
+vector<Student> vec;
 
 int main() {
     
@@ -25,15 +26,14 @@ int main() {
         int h, w;
         cin >> h >> w;
 
-        pq.push({i, h, w});
+        vec.push_back({i, h, w});
     }
 
-    while(!pq.empty())
-    {
-        Student now = pq.top();
-        pq.pop();
+    sort(vec.begin(), vec.end());
 
-        cout << now.height << " " << now.weight << " " << now.num << endl;
+    for(int i=0;i<n;i++)
+    {
+        cout << vec[i].height << " " << vec[i].weight << " " << vec[i].num << endl;
     }
 
     return 0;

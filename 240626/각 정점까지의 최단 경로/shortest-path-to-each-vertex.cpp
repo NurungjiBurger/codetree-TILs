@@ -45,12 +45,12 @@ int main() {
     cin >> n >> m;
     cin >> k;
 
+    for(int i=0;i<n;i++) dist[i] = 21e8;
+
     for(int i=0;i<m;i++)
     {
         int from, to, cost;
         cin >> from >> to >> cost;
-
-        dist[i] = 21e8;
 
         from--;
         to--;
@@ -63,7 +63,8 @@ int main() {
 
     for(int i=0;i<n;i++)
     {
-        cout << dist[i] << endl;
+        if (dist[i] == 21e8) cout << -1 << endl;
+        else cout << dist[i] << endl;
     }
 
 

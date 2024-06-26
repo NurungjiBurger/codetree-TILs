@@ -42,6 +42,7 @@ int main() {
             if (sum > b)
             {
                 ans = max(ans, i);
+                break;
             }
         }
 

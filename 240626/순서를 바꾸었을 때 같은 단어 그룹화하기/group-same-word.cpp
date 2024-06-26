@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <unordered_map>
 
 using namespace std;
@@ -15,19 +16,9 @@ int main() {
         string str;
         cin >> str;
 
-        int alpha[60] = {0,};
+        sort(str.begin(), str.end());
 
-        for(int j=0;j<str.length();j++) alpha[str[j] - 'A']++;
-
-        string tmp = "";
-        for(int i=0;i<60;i++)
-        {
-            if (alpha[i] == 0) continue;
-            tmp += (char)(i + 'A');
-            tmp += to_string(alpha[i]);
-        }
-
-        um[tmp]++;
+        um[str]++;
     }
 
     int ans = -21e8;

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <queue>
 
 using namespace std;
 
@@ -9,7 +8,6 @@ struct price{
     int p;
     int s;
     bool operator<(price right) const{
-        if ((p + s) == (right.p + right.s)) return p < right.p;
         return (p + s) < (right.p + right.s);
     }
 };
@@ -34,21 +32,17 @@ int main() {
     for(int idx=0;idx<n;idx++)
     {
         // idx -> 할인 품목
-        int sum = 0, cnt = 0;
+        int sum = ((arr[idx].p / 2) + arr[idx].s), cnt = 1;
         for(int i=0;i<n;i++)
         {
-            int pr;
-            if (idx == i) pr = ( (arr[i].p / 2 ) + arr[i].s );
-            else pr = ( arr[i].p + arr[i].s );
-
-            sum += pr;
+            if (idx == i) continue;
+            else sum += (arr[i].p + arr[i].s);
 
             if (sum > b) break;
 
             cnt++;
             ans = max(ans, cnt);
         }
-
     }
 
     cout << ans;

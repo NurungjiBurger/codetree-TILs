@@ -64,6 +64,7 @@ int main() {
 
             if (cost > b) continue;
             if (next >= n) continue;
+            if (ans > cnt) continue;
 
             ans = max(ans, cnt);
             que.push({next, cnt, cost, coupon});

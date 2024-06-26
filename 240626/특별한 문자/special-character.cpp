@@ -3,7 +3,7 @@
 
 using namespace std;
 
-unordered_map<char, int> um;
+unordered_map<char, pair<int, int>> um;
 
 int main() {
     
@@ -12,22 +12,26 @@ int main() {
 
     for(int i=0;i<str.length();i++)
     {
-        um[str[i]]++;
+        if (um.count(str[i]) == 0) um[str[i]] = {1, i};
+        else um[str[i]].first++;
     }
 
-    bool print = false;
+    string ans = "None";
+    int far = 21e8;
 
     for(auto it = um.begin();it != um.end();it++)
     {
-        if (it->second == 1) 
+        if (it->second.first == 1) 
         {
-            cout << it->first;
-            print = true;
-            break;
+            if (far > it->second.second)
+            {
+                far = it->second.second;
+                ans = it->first;
+            }
         }
     }
 
-    if (!print) cout << "None";
+    cout << ans;
 
 
     return 0;

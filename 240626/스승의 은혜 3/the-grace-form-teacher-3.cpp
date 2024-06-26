@@ -31,7 +31,7 @@ int main() {
     for(int idx=0;idx<n;idx++)
     {
         // idx -> 할인 품목
-        int sum = 0;
+        int sum = 0, cnt = 0;
         for(int i=0;i<n;i++)
         {
             if (idx == i) sum += ((arr[i].p/2) + arr[i].s);
@@ -42,9 +42,11 @@ int main() {
 
             if (sum > b)
             {
-                ans = max(ans, i);
+                ans = max(ans, cnt);
                 break;
             }
+
+            cnt++;
         }
 
     }

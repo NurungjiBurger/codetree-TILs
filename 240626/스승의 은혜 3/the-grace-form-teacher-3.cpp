@@ -8,9 +8,8 @@ struct price{
     int p;
     int s;
     bool operator<(price right) const{
-
-        if (p + s == right.p + right.s) return p < right.p;
-        return p + s < right.p + right.s;
+       // if ((p + s) == (right.p + right.s)) return p < right.p;
+        return (p + s) < (right.p + right.s);
     }
 };
 

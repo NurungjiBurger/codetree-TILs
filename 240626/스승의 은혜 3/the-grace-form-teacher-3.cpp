@@ -40,13 +40,10 @@ int main() {
                 sum += (arr[i].p + arr[i].s);
             }
 
-            if (sum > b)
-            {
-                ans = max(ans, cnt);
-                break;
-            }
+            if (sum >= b) break;
 
             cnt++;
+            ans = max(ans, cnt);
         }
 
     }

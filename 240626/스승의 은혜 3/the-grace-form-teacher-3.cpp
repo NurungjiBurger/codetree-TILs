@@ -37,8 +37,11 @@ int main() {
         int sum = 0, cnt = 0;
         for(int i=0;i<n;i++)
         {
-            if (idx == i) sum += ((arr[i].p/2) + arr[i].s);
-            else sum += (arr[i].p + arr[i].s);
+            int pr;
+            if (idx == i) pr = ( (arr[i].p / 2 ) + arr[i].s );
+            else pr = ( arr[i].p + arr[i].s );
+
+            sum += pr;
 
             if (sum > b) break;
 

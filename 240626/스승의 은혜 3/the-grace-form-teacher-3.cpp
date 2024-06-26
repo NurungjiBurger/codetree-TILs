@@ -12,7 +12,7 @@ struct price{
     }
 };
 
-int n, b, ans = 0;
+int n, b, ans = 1;
 vector<price> arr;
 
 int main() {
@@ -41,8 +41,9 @@ int main() {
             if (sum > b) break;
 
             cnt++;
-            ans = max(ans, cnt);
         }
+        
+        ans = max(ans, cnt);
     }
 
     cout << ans;

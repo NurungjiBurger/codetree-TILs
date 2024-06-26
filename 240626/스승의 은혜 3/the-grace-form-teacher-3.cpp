@@ -38,12 +38,9 @@ int main() {
         for(int i=0;i<n;i++)
         {
             if (idx == i) sum += ((arr[i].p/2) + arr[i].s);
-            else
-            {
-                sum += (arr[i].p + arr[i].s);
-            }
+            else sum += (arr[i].p + arr[i].s);
 
-            if (sum >= b) break;
+            if (sum > b) break;
 
             cnt++;
             ans = max(ans, cnt);

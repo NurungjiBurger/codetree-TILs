@@ -48,11 +48,6 @@ int main() {
                         cost += ((p[next]/2) + s[next]);
                         cnt = now.cnt + 1;
                     }
-                    else
-                    {
-                        cost += (p[next] + s[next]);
-                        cnt = now.cnt + 1;
-                    }
                     break;
                 case 1:
                     // 쿠폰 유무 상관없이 정가 구매

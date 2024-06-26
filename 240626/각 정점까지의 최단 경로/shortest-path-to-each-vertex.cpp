@@ -45,7 +45,7 @@ int main() {
     cin >> n >> m;
     cin >> k;
 
-    for(int i=0;i<n;i++)
+    for(int i=0;i<m;i++)
     {
         int from, to, cost;
         cin >> from >> to >> cost;

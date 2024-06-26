@@ -14,7 +14,7 @@ struct price{
     }
 };
 
-int n, b, ans = -21e8;
+int n, b, ans = 0;
 vector<price> arr;
 
 int main() {

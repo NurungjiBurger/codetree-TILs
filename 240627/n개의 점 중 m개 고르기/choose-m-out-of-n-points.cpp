@@ -15,6 +15,7 @@ vector<Point> vec;
 
 void check()
 {
+    int tmp = -21e8;
     for(int i=0;i<m;i++)
     {
         for(int j=0;j<m;j++)
@@ -25,9 +26,10 @@ void check()
             int ydif = arr[c[i]].y - arr[c[j]].y;
             int dist = (xdif*xdif) + (ydif*ydif);
 
-            ans = min(ans, dist);
+            tmp = max(tmp, dist);
         }
     }
+    ans = min(ans, tmp);
 }
 
 void dfs(int depth, int idx)

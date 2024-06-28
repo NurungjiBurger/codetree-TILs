@@ -16,13 +16,17 @@ int main() {
 
     cin >> n;
 
+    // 5000
     for(int i=0;i<n;i++) cin >> A[i];
     for(int i=0;i<n;i++) cin >> B[i];
     for(int i=0;i<n;i++) cin >> C[i];
     for(int i=0;i<n;i++) cin >> D[i];
 
+    // 25000000
+    // 5000
     for(int i=0;i<n;i++)
     {
+        // 5000
         for(int j=0;j<n;j++)
         {
             AB[A[i] + B[j]]++;
@@ -37,14 +41,13 @@ int main() {
         }
     }
 
+
     for(auto first : AB)
     {
-        for(auto second : CD)
+        int tmp = first.first;
+        if (CD.count(-tmp) != 0)
         {
-            if (first.first + second.first == 0)
-            {
-                ans += (first.second * second.second);
-            }
+            ans += (first.second * CD[-tmp]);
         }
     }
 

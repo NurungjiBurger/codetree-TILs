@@ -17,7 +17,7 @@ int main() {
         for(int j=i;j<input.length();j++)
         {
             str += input[j];
-            if (um.count(str) == 0) um[str] = i;
+            if (str.length() == goal.length() && um.count(str) == 0) um[str] = i;
         }
     }
 

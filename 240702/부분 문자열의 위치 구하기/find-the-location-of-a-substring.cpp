@@ -11,15 +11,10 @@ int main() {
     cin >> input;
     cin >> goal;
 
-    for(int i=0;i<input.length();i++)
+    for(int i=0;i<=input.length() - goal.length();i++)
     {
-        string str = "";
-        for(int j=i;j<input.length();j++)
-        {
-            str += input[j];
-            if ((int)str.length() > (int)goal.length()) break;
-            if (str.length() == goal.length() && um.count(str) == 0) um[str] = i;
-        }
+        string str = input.substr(i, goal.length());
+        if (um.count(str) == 0) um[str] = i;
     }
 
     if (um.count(goal) == 0) cout << -1;

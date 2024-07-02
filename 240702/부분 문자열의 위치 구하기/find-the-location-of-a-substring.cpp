@@ -14,7 +14,7 @@ int main() {
     for(int i=0;i<=input.length() - goal.length();i++)
     {
         string str = input.substr(i, goal.length());
-        if (um.count(str) == 0) um[str] = i;
+        if (input[i] == goal[0] && um.count(str) == 0) um[str] = i;
     }
 
     if (um.count(goal) == 0) cout << -1;

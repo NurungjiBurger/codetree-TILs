@@ -3,8 +3,15 @@
 
 using namespace std;
 
+struct Num{
+    int num;
+    bool operator<(Num right) const{
+        return abs(num) > abs(right.num);
+    }
+};
+
 int n;
-priority_queue<int, vector<int>, greater<int>> pq;
+priority_queue<Num> pq;
 
 int main() {
 
@@ -20,12 +27,12 @@ int main() {
             if (pq.empty()) cout << 0;
             else
             {
-                cout << pq.top();
+                cout << pq.top().num;
                 pq.pop();
             }
             cout << endl;
         }
-        else pq.push(x);
+        else pq.push({x});
     }
 
 

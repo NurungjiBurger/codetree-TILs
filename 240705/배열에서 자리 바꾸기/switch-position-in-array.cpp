@@ -64,13 +64,31 @@ void ChangeNode(Node *ls, Node *le, Node *rs, Node *re)
 void RetrunNodeptr()
 {
     Node *ptr = head;
+    int cnt = 0;
 
     while(ptr != nullptr)
     {
-        if (ptr->num == a) aptr = ptr;
-        if (ptr->num == b) bptr = ptr;
-        if (ptr->num == c) cptr = ptr;
-        if (ptr->num == d) dptr = ptr;
+        if (ptr->num == a) 
+        {
+            aptr = ptr;
+            cnt++;
+        }
+        if (ptr->num == b) 
+        {
+            bptr = ptr;
+            cnt++;
+        }
+        if (ptr->num == c) 
+        {
+            cptr = ptr;
+            cnt++;
+        }
+        if (ptr->num == d) 
+        {
+            dptr = ptr;
+            cnt++;
+        }
+        if (cnt == 4) return;
         ptr = ptr->next;
     }
 

@@ -10,6 +10,8 @@ struct Node{
 };
 
 int n, q;
+int a, b, c, d;
+Node *aptr, *bptr, *cptr, *dptr;
 Node *head, *tail;
 
 void InsertNode(Node *from, int num)
@@ -59,18 +61,19 @@ void ChangeNode(Node *ls, Node *le, Node *rs, Node *re)
     }
 }
 
-Node* RetrunNodeptr(Node *from, int val)
+void RetrunNodeptr()
 {
-    Node *ptr = from;
+    Node *ptr = head;
 
-    while(true)
+    while(ptr != nullptr)
     {
-        if (ptr->num == val) return ptr;
-        if (ptr->next == nullptr) break;
+        if (ptr->num == a) aptr = ptr;
+        if (ptr->num == b) bptr = ptr;
+        if (ptr->num == c) cptr = ptr;
+        if (ptr->num == d) dptr = ptr;
         ptr = ptr->next;
     }
 
-    return nullptr;
 }
 
 void print()
@@ -107,16 +110,9 @@ int main() {
 
     for(int i=0;i<q;i++)
     {
-        int a, b, c, d;
-
         cin >> a >> b >> c >> d;
 
-        Node *aptr, *bptr, *cptr, *dptr;
-
-        aptr = RetrunNodeptr(head, a);
-        bptr = RetrunNodeptr(aptr, b);
-        cptr = RetrunNodeptr(head, c);
-        dptr = RetrunNodeptr(cptr, d);
+        RetrunNodeptr();
 
         ChangeNode(aptr, bptr, cptr, dptr);
     }

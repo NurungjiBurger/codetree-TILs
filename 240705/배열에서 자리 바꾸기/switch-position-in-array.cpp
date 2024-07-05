@@ -38,6 +38,18 @@ void ChangeNode(Node *ls, Node *le, Node *rs, Node *re)
 
         re->next = ls;
     }
+    else if (re->next == ls)
+    {
+        ls->prev = rs->prev;
+        rs->prev->next = ls;
+
+        rs->prev = le;
+
+        re->next = le->next;
+        le->next->prev = re;
+
+        le->next = rs;
+    }
     else
     {
 

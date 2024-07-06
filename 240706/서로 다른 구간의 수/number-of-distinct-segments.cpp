@@ -8,7 +8,8 @@ struct Line{
     int start;
     int end;
     bool operator<(Line right) const{
-        return end < right.end;
+        if (start == right.start) return end < right.end;
+        return start < right.start;
     }
 };
 
@@ -40,7 +41,7 @@ int main() {
             last = vec[i].end;
             ++ans;
         }
-        last = vec[i].end;
+        last = max(last, (long long)vec[i].end);
     }
 
     cout << ans;

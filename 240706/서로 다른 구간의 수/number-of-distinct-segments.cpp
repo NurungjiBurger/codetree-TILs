@@ -8,8 +8,7 @@ struct Line{
     int start;
     int end;
     bool operator<(Line right) const{
-        if (start == right.start) return end < right.end;
-        return start < right.start;
+        return end < right.end;
     }
 };
 

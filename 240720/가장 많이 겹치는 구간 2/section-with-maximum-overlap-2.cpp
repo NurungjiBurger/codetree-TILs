@@ -1,10 +1,13 @@
 #include <iostream>
-#include <map>
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
 int n;
-map<int, int> m;
+vector<pair<int, int>> vec;
+
+int ans = 0;
 
 int main() {
     
@@ -15,21 +18,23 @@ int main() {
         int l, r;
         cin >> l >> r;
 
-        m[l]++;
-        m[r]--;
+        vec.push_back({l, 1});
+        vec.push_back({r, -1});
     }
 
-    int last = 0, ans = 0;
+    sort(vec.begin(), vec.end());
 
-    for(auto item : m)
+    int last = 0;
+
+    for(int i=0;i<2*n;i++)
     {
-        item.second += last;
-        last = item.second;
+        last += vec[i].second;
 
         ans = max(ans, last);
     }
 
     cout << ans;
+
 
 
     return 0;

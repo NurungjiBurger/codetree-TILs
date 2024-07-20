@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int n, m;
+long long n, m;
 long long arr[100001], ans = 21e13;
 
 void ps(long long start, long long end)
@@ -13,8 +13,8 @@ void ps(long long start, long long end)
         // 예상되는 시간
         mid = (start + end) / 2;
 
-        int cnt = 0;
-        for(int i=0;i<m;i++) cnt += (int)(mid / arr[i]);
+        long long cnt = 0;
+        for(long long i=0;i<m;i++) cnt += (mid / arr[i]);
 
         if (cnt >= n)
         {
@@ -32,7 +32,7 @@ int main() {
 
     long long mini = 21e13, maxi = -21e13;
 
-    for(int i=0;i<m;i++)
+    for(long long i=0;i<m;i++)
     {
         cin >> arr[i];
 

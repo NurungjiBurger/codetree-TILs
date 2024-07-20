@@ -2,7 +2,7 @@
 using namespace std;
 
 int n, m;
-long long arr[100001], ans;
+long long arr[100001], ans = 21e13;
 
 void ps(long long start, long long end)
 {
@@ -18,7 +18,7 @@ void ps(long long start, long long end)
 
         if (cnt >= n)
         {
-            ans = mid;
+            ans = min(ans, mid);
             end = mid - 1;
         }
         else start = mid + 1;

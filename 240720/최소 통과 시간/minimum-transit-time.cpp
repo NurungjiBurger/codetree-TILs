@@ -40,7 +40,7 @@ int main() {
         maxi = max(maxi, arr[i]);
     }
 
-    ps(mini, maxi * n);
+    ps(1, maxi * n);
 
     cout << ans;
 

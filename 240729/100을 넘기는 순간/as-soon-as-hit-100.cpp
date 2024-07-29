@@ -25,5 +25,10 @@ int main() {
         }
     }
 
+    cout << sum << endl;
+    cout << fixed;
+    cout.precision(1);
+    cout << (float)sum / n << endl;
+
     return 0;
 }

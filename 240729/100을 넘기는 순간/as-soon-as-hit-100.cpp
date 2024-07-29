@@ -20,15 +20,10 @@ int main() {
             cout << sum << endl;
             cout << fixed;
             cout.precision(1);
-            cout << (float)sum / n << endl;
+            cout << (float)sum / (i + 1) << endl;
             return 0;
         }
     }
-
-    cout << sum << endl;
-    cout << fixed;
-    cout.precision(1);
-    cout << (float)sum / n << endl;
 
     return 0;
 }

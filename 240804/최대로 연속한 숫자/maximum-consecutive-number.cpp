@@ -19,11 +19,11 @@ int main() {
 
         removed.insert(num);
 
-        auto iter = removed.find(num);
+        auto iter = removed.lower_bound(num);
         int tmp = num;
         ans = -21e8;
 
-        // logN * 10만
+        // logN * logN * 20만
         // left 확인
         while(true)
         {
@@ -39,7 +39,7 @@ int main() {
             iter--;
         }
         // right 확인
-        iter = removed.find(num);
+        iter = removed.lower_bound(num);
         tmp = num;
         while(true)
         {
@@ -49,8 +49,8 @@ int main() {
                 break;
             }
             ans = max(ans, (*iter - tmp) - 1);
-
             tmp = *iter;
+
             iter++;
         }
 

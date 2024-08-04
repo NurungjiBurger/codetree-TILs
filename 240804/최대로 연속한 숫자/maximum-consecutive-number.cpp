@@ -3,8 +3,8 @@
 
 using namespace std;
 
-int n, m, ans = -21e8;
-set<int> removed;
+long long n, m, ans = -21e8;
+set<long long> removed;
 
 int main() {
 
@@ -14,16 +14,17 @@ int main() {
 
     for(int i=0;i<m;i++)
     {
-        int num;
+        long long num;
         cin >> num;
 
         removed.insert(num);
 
         auto iter = removed.lower_bound(num);
-        int tmp = num;
+        long long tmp = num;
         ans = -21e8;
 
-        // logN * logN * 20만
+        // logN * 10만
+
         // left 확인
         while(true)
         {

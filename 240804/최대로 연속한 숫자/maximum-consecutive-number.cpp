@@ -19,41 +19,32 @@ int main() {
 
         removed.insert(num);
 
-        auto iter = removed.lower_bound(num);
+        auto iter = removed.find(num);
         long long tmp = num;
         ans = -21e8;
 
         // logN * 10만
-
-        // left 확인
-        while(true)
+        for(;iter != removed.begin();iter--)
         {
             ans = max(ans, (tmp - *iter) - 1);
             tmp = *iter;
-
-            if (iter == removed.begin())
-            {
-                ans = max(ans, (tmp - 0));
-                break;
-            }
-
-            iter--;
         }
+        tmp = *iter;
+        ans = max(ans, (tmp - 0));
+
+        // left 확인
+
         // right 확인
-        iter = removed.lower_bound(num);
+        iter = removed.find(num);
         tmp = num;
-        while(true)
+
+        for(;iter != removed.end();iter++)
         {
-            if (iter == removed.end()) 
-            {
-                ans = max(ans, n - tmp);
-                break;
-            }
             ans = max(ans, (*iter - tmp) - 1);
             tmp = *iter;
-
-            iter++;
         }
+        ans = max(ans, n - tmp);
+
 
         cout << ans << endl;
     }

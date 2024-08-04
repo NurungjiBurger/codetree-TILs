@@ -30,6 +30,18 @@ int main() {
 
         arr[num] = max(leftiter->second, rightiter->second);
 
+        if (leftiter != arr.begin())
+        {
+            auto iter = --leftiter;
+            leftiter->second = max(leftiter->second, iter->second);
+        }
+
+        if (rightiter != --arr.end())
+        {
+            auto iter = ++rightiter;
+            rightiter->second = max(rightiter->second, iter->second);
+        }
+
         int ans = -21e8;
 
         ans = max(ans, arr[num]);

@@ -32,15 +32,18 @@ int main() {
 
         if (leftiter != arr.begin())
         {
-            auto iter = --leftiter;
+            auto iter = leftiter;
+            iter--;
             leftiter->second = max(leftiter->second, iter->second);
         }
 
         if (rightiter != --arr.end())
         {
-            auto iter = ++rightiter;
+            auto iter = rightiter;
+            iter++;
             rightiter->second = max(rightiter->second, iter->second);
         }
+
 
         int ans = -21e8;
 

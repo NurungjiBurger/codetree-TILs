@@ -1,57 +1,41 @@
 #include <iostream>
-#include <map>
+#include <set>
 
 using namespace std;
 
 int n, m;
-map<int, int> arr;
+set<int> nums;
+set<pair<int, pair<int, int>>> lens;
 
 int main() {
 
     cin >> n >> m;
 
-    arr[-1] = n + 1;
-    arr[n + 1] = n + 1;
+    nums.insert(-1);
+    nums.insert(n + 1);
+
+    lens.insert({-(n + 1), {-1, n + 1}});
 
     for(int i=0;i<m;i++)
     {
         int num;
         cin >> num;
 
-        arr[num] = 0;
+        nums.insert(num);
 
-        auto leftiter = arr.find(num);
-        leftiter--;
-        auto rightiter = arr.find(num);
-        rightiter++;
+        auto iter = nums.find(num);
+        iter++;
+        int e = *iter;
 
-        leftiter->second = num - leftiter->first - 1;
-        rightiter->second = rightiter->first - num - 1;
+        iter = nums.find(num);
+        iter--;
+        int s = *iter;
 
-        arr[num] = max(leftiter->second, rightiter->second);
+        lens.erase({-(e - s - 1), {s, e}});
+        lens.insert({-(num - s - 1), {s, num}});
+        lens.insert({-(e - num - 1), {num, e}});
 
-        if (leftiter != arr.begin())
-        {
-            auto iter = leftiter;
-            iter--;
-            leftiter->second = max(leftiter->second, iter->second);
-        }
-
-        if (rightiter != --arr.end())
-        {
-            auto iter = rightiter;
-            iter++;
-            rightiter->second = max(rightiter->second, iter->second);
-        }
-
-
-        int ans = -21e8;
-
-        ans = max(ans, arr[num]);
-        ans = max(ans, arr.begin()->second);
-        ans = max(ans, (--arr.end())->second);
-
-        cout << ans << endl;
+        cout << -(*lens.begin()).first << endl;
     }
 
 

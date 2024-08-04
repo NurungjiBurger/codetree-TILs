@@ -1,50 +1,40 @@
 #include <iostream>
-#include <set>
+#include <map>
 
 using namespace std;
 
-long long n, m, ans = -21e8;
-set<long long> removed;
+int n, m;
+map<int, int> arr;
 
 int main() {
 
     cin >> n >> m;
 
-    // arr 라는 곳에 0 ~ n 까지 있다고 가정
+    arr[-1] = n + 1;
+    arr[n + 1] = n + 1;
 
     for(int i=0;i<m;i++)
     {
-        long long num;
+        int num;
         cin >> num;
 
-        removed.insert(num);
+        arr[num] = 0;
 
-        auto iter = removed.find(num);
-        long long tmp = num;
-        ans = -21e8;
+        auto leftiter = arr.find(num);
+        leftiter--;
+        auto rightiter = arr.find(num);
+        rightiter++;
 
-        // logN * 10만
-        for(;iter != removed.begin();iter--)
-        {
-            ans = max(ans, (tmp - *iter) - 1);
-            tmp = *iter;
-        }
-        tmp = *iter;
-        ans = max(ans, (tmp - 0));
+        leftiter->second = num - leftiter->first - 1;
+        rightiter->second = rightiter->first - num - 1;
 
-        // left 확인
+        arr[num] = max(leftiter->second, rightiter->second);
 
-        // right 확인
-        iter = removed.find(num);
-        tmp = num;
+        int ans = -21e8;
 
-        for(;iter != removed.end();iter++)
-        {
-            ans = max(ans, (*iter - tmp) - 1);
-            tmp = *iter;
-        }
-        ans = max(ans, n - tmp);
-
+        ans = max(ans, arr[num]);
+        ans = max(ans, arr.begin()->second);
+        ans = max(ans, (--arr.end())->second);
 
         cout << ans << endl;
     }
